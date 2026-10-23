@@ -7,6 +7,8 @@ import readline from 'node:readline/promises';
 import { createHash } from 'node:crypto';
 
 const args = process.argv.slice(2);
+const clientId = process.env.SUMSUB_CLIENT_ID;
+if (!clientId) throw new Error('Set SUMSUB_CLIENT_ID before running.');
 const option = (name, fallback) => {
   const i = args.indexOf(name);
   return i < 0 ? fallback : args[i + 1];
@@ -121,8 +123,6 @@ const context = await chromium.launchPersistentContext(profile, {
 const openPages = context.pages();
 const page = openPages[0] || await context.newPage();
 for (const extra of openPages.slice(1)) await extra.close();
-const clientId = process.env.SUMSUB_CLIENT_ID;
-if (!clientId) throw new Error('Set SUMSUB_CLIENT_ID before running.');
 const listUrl = uid => {
   const url = new URL('https://cockpit.sumsub.com/checkus/applicants/individual');
   url.searchParams.set('clientId', clientId);
