@@ -4,13 +4,13 @@
 
 从 Excel 的 `UID` 列读取用户，先查看 Sumsub 初始状态。仅在状态为 `Documents requested` 时执行 `View files → Set as active → Request check`；其他状态记录后跳过。每次复用同一个 Chrome 窗口和标签页。脚本会执行真实操作，先用 `--limit 1` 核对。
 
-安装 Node.js、Python 3、Google Chrome，然后在本目录执行 `npm install` 和 `python3 -m pip install openpyxl`。在终端设置 `SUMSUB_CLIENT_ID` 为你的 Sumsub 客户端 ID，再运行下面的命令或双击 `.command` 启动器。请勿将 Excel、浏览器配置或结果日志提交到 GitHub。
+安装 Node.js、Python 3、Google Chrome，然后在本目录执行 `npm install` 和 `python3 -m pip install openpyxl`。从终端运行时先设置 `SUMSUB_CLIENT_ID`；双击 `.command` 启动器时会提示输入客户端 ID。请勿将 Excel、浏览器配置或结果日志提交到 GitHub。
 
 知识点：Excel 字符串读取避免长 UID 精度丢失、Playwright 浏览器自动化、状态门控、超时与错误分类、JSONL/CSV 审计日志、按工作簿哈希断点续跑。
 
 ## English overview
 
-Reads UIDs from Excel, checks each applicant's initial Sumsub status, and requests a new check only for `Documents requested`. It reuses one Chrome tab. Install Node.js, Python 3, Chrome, `npm install`, and `python3 -m pip install openpyxl`. Set `SUMSUB_CLIENT_ID` in the terminal before running. Keep workbooks, browser profiles, and result logs out of GitHub.
+Reads UIDs from Excel, checks each applicant's initial Sumsub status, and requests a new check only for `Documents requested`. It reuses one Chrome tab. Install Node.js, Python 3, Chrome, `npm install`, and `python3 -m pip install openpyxl`. Set `SUMSUB_CLIENT_ID` for terminal runs; the double-click launchers prompt for it. Keep workbooks, browser profiles, and result logs out of GitHub.
 
 Concepts: preserving long UID strings, Playwright automation, status gates, timeout handling, JSONL/CSV audit logs, and workbook-hash-based resume.
 
