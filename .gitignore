@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+chrome-profile/
+*.xlsx
+*.xls
+results*.csv
+results*.jsonl
+.request-check.running
+*.log
