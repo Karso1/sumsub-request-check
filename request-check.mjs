@@ -8,7 +8,6 @@ import { createHash } from 'node:crypto';
 
 const args = process.argv.slice(2);
 const clientId = process.env.SUMSUB_CLIENT_ID;
-if (!clientId) throw new Error('Set SUMSUB_CLIENT_ID before running.');
 const option = (name, fallback) => {
   const i = args.indexOf(name);
   return i < 0 ? fallback : args[i + 1];
@@ -82,6 +81,7 @@ const previouslyCompleted = completed.size;
 console.log(`表格 ${path.basename(input)}（版本 ${sourceId.slice(0, 8)}） ${all.length} 条｜此表已完成 ${previouslyCompleted} 条｜本次待处理 ${queue.length} 条`);
 console.log('累计状态：' + cumulativeSummary());
 if (dryRun || queue.length === 0) process.exit(0);
+if (!clientId) throw new Error('Set SUMSUB_CLIENT_ID before running.');
 
 function processIsAlive(pid) {
   if (!Number.isSafeInteger(pid) || pid <= 0) return false;
